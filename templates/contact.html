@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+<!--===============================================================================================-->
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('{{url_for('static', filename='images/contact.jpg')}}')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="page-heading">
+                    <h1>Contact Us</h1>
+                    <span class="subheading">Have questions? we have answers.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages%}
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+    {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<!-- Main Content-->
+<div class="container-contact100">
+    <div class="wrap-contact100">
+        <form class="contact100-form validate-form" action="{{ url_for('contact') }}" method="POST">
+            <span class="contact100-form-title">
+                Get in Touch
+            </span>
+
+            <div class="wrap-input100 validate-input" data-validate="Name is required">
+                <input class="input100" id="name" type="text" name="name" placeholder="Name" required>
+                <label class="label-input100" for="name">
+                    <span class="lnr lnr-user"></span>
+                </label>
+            </div>
+
+            <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                <input class="input100" id="email" type="text" name="email" placeholder="Email" required>
+                <label class="label-input100" for="email">
+                    <span class="lnr lnr-envelope"></span>
+                </label>
+            </div>
+
+            <div class="wrap-input100 validate-input" data-validate = "Phone is required">
+                <input class="input100" id="phone" type="text" name="phone" placeholder="Phone" required>
+                <label class="label-input100" for="phone">
+                    <span class="lnr lnr-phone-handset"></span>
+                </label>
+            </div>
+
+            <div class="wrap-input100 validate-input" data-validate = "Message is required">
+                <textarea class="input100" name="msg" placeholder="Your message..." required></textarea>
+            </div>
+
+           
+
+            <div class="container-contact100-form-btn">
+                <div class="wrap-contact100-form-btn">
+                    <div class="contact100-form-bgbtn"></div>
+                    <button class="contact100-form-btn">
+                        Send Email
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+
+<div id="dropDownSelect1"></div>
+
+
+	<script src="{{url_for('static', filename='js/main.js')}}"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+
+
+{% endblock %}
